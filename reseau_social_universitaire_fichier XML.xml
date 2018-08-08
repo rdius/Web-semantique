@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:Etablissement xmlns:tns="http://www.example.org/File1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/File1 XSDXML.xsd ">
+  <tns:personne genre="M" type="Etudiant">
+    <tns:name>KAFANDO</tns:name>
+    <tns:address>01262130563</tns:address>
+    <tns:type>tempsPlein</tns:type>
+    <tns:age>25</tns:age>
+    <tns:page>
+      <tns:name>mystories</tns:name>
+    </tns:page>
+  </tns:personne>
+  
+  <tns:filiere>
+    <tns:name>Physique</tns:name>
+    <tns:identite>05</tns:identite>
+    <tns:description>Cours de physique</tns:description>
+    <tns:Matiere>
+      <tns:name>Thermodynaamique</tns:name>
+      <tns:code>12</tns:code>
+      <tns:nbCredit>5</tns:nbCredit>
+      <tns:description>Cours de thermodynamique</tns:description>
+    </tns:Matiere>
+  </tns:filiere>
+</tns:Etablissement>

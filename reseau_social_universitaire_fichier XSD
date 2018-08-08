@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema 
+		xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.example.org/reseau_social_universitaire"
+		xmlns:tns="http://www.example.org/reseau_social_universitaire"
+		elementFormDefault="qualified">
+	
+		<xs:annotation>
+			<xs:documentation>
+				Ce schema XML decrit une ontologie dans le cadre d'un reaseau social universitaire 
+			</xs:documentation>
+		</xs:annotation>
+		
+		<!-- Types -->
+		<xs:complexType name="filiereType">
+			<xs:sequence>
+				<xs:element name="nom" type="xs:string" />
+				<xs:element name="identite" type="xs:integer" />
+				<xs:element name="description" type="xs:string" />				
+				<xs:element name="matiere" type="tns:matiereType" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+		
+		
+		<xs:complexType name="matiereType">
+			<xs:sequence>
+				<xs:element name="nom" type="xs:string" />
+				<xs:element name="code" type="xs:int" />
+				<xs:element name="nbCredits" type="xs:int" />
+				<xs:element name="description" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+		
+		
+		<xs:complexType name="pageType">
+			<xs:sequence>
+				<xs:element name="nom" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+		
+		
+		<xs:complexType name="personneType">
+			<xs:sequence>
+				<xs:element name="nom" type="xs:string" />
+				<xs:element name="addresse" type="xs:string" />
+				<xs:element name="type" type="xs:string" />
+				<xs:element name="age" type="xs:int" />
+				<xs:element name="page" type="tns:pageType" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+			
+			<xs:attribute name="genre" type="tns:genre" />
+			<xs:attribute name="type" type="tns:type" />
+		</xs:complexType>
+		
+		<xs:simpleType name="genre">
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="M"></xs:enumeration>
+				<xs:enumeration value="F"></xs:enumeration>
+			</xs:restriction>
+		</xs:simpleType>
+		
+		<xs:simpleType name="type">
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="etudiant"></xs:enumeration>
+				<xs:enumeration value="proffesseur"></xs:enumeration>
+				<xs:enumeration value="surveillant"></xs:enumeration>
+				<xs:enumeration value="directeur"></xs:enumeration>
+				<xs:enumeration value="secretaire"></xs:enumeration>
+				<xs:enumeration value="comptable"></xs:enumeration>
+			</xs:restriction>
+		</xs:simpleType>
+		
+		<xs:complexType name="groupeType">
+			<xs:sequence>
+				<xs:element name="nom" type="xs:string" />
+				<xs:element name="identifiant" type="xs:integer" />
+				<xs:element name="description" type="xs:string" />	
+				<xs:element name="personne" type="tns:personneType" minOccurs="1"	maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+		
+		
+		<xs:complexType name="etablissementType">
+			<xs:sequence>
+				<xs:element name="nom" type="xs:string" />
+				<xs:element name="identite" type="xs:integer" />
+				<xs:element name="description" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+		
+		<xs:complexType name="lieuType">
+			<xs:sequence>
+				<xs:element name="nom" type="xs:string" />
+				<xs:element name="description" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+		
+		
+		<!-- Elements -->	
+		<xs:element name="reseau_social_universitaire">
+			<xs:complexType>
+					<xs:sequence>
+						<xs:element name="filiere"  type="tns:filiereType" minOccurs="1"	maxOccurs="unbounded"/>					
+						<xs:element name="page" type="tns:pageType" minOccurs="1"	maxOccurs="unbounded" />			
+						<xs:element name="groupe" type="tns:groupeType" minOccurs="1"	maxOccurs="unbounded" />				
+						<xs:element name="matiere" type="tns:matiereType" minOccurs="1"	maxOccurs="unbounded" />				
+						<xs:element name="etablissement" type="tns:etablissementType" minOccurs="1"	maxOccurs="unbounded"/>				
+						<xs:element name="personne" type="tns:personneType" minOccurs="1"	maxOccurs="unbounded"/>				
+						<xs:element name="lieu" type="tns:lieuType" minOccurs="1"	maxOccurs="unbounded"/>
+					</xs:sequence>
+			</xs:complexType>	
+		</xs:element>				
+		
+</xs:schema>
